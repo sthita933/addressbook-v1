@@ -2,32 +2,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <groupId>com.preethidevops.tutorial</groupId>
-  <artifactId>addressbook</artifactId>
-  <version>4.0</version>
-  <packaging>war</packaging>
+    <modelVersion>4.0.0</modelVersion>
 
-  <name>addressbook</name>
+    <groupId>com.preethidevops.tutorial</groupId>
+    <artifactId>addressbook</artifactId>
+    <version>4.0</version>
+    <packaging>war</packaging>
 
-  <!-- ✅ Dependencies MUST be inside this -->
-  <dependencies>
-    <!-- JUnit FIX -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <name>addressbook</name>
 
-</project>
-
+    <!-- Properties -->
     <properties>
         <java.version>1.8</java.version>
         <vaadin.version>8.14.3</vaadin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
+
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Vaadin -->
         <dependency>
@@ -48,7 +48,7 @@
             <version>${vaadin.version}</version>
         </dependency>
 
-        <!-- IMPORTANT: Fix for com.vaadin.v7.* -->
+        <!-- Compatibility -->
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-compatibility-server</artifactId>
@@ -61,21 +61,20 @@
             <version>${vaadin.version}</version>
         </dependency>
 
-        <!-- Apache Commons BeanUtils -->
+        <!-- Commons -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.4</version>
         </dependency>
 
-        <!-- Apache Commons Lang -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
 
-        <!-- SLF4J Logging -->
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -88,7 +87,7 @@
             <version>1.7.36</version>
         </dependency>
 
-        <!-- Servlet API -->
+        <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -98,6 +97,7 @@
 
     </dependencies>
 
+    <!-- Build -->
     <build>
         <finalName>addressbook</finalName>
 
@@ -105,11 +105,12 @@
 
             <!-- Compiler -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -119,7 +120,7 @@
                 <version>3.3.2</version>
             </plugin>
 
-            <!-- JaCoCo (NO duplicate execution) -->
+            <!-- JaCoCo -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -136,6 +137,5 @@
 
         </plugins>
     </build>
-    
 
 </project>
