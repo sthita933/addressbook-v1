@@ -22,6 +22,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        
+        stage('Code coverage') {
+            steps {
+                sh 'mvn verify'
+            }
+        }
     }
 }
